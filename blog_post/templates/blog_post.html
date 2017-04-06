@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+	<div class="col-xs-12 col-sm-12 col-md-8 col-lg-9 col-xl-9">
+		<div class="tm-blog-post">
+			<h2 class="tm-blue-text">{{ article.title|title }}</h2>
+			<h6>发布日期：<span>{{ article.create_time|date:'y-m-d' }}</span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp浏览量：<span>{{ article.views }}</span></h6>
+			<p>{{ article.body|safe }}</p>
+		</div>
+		<br>
+		{% if article.prev == 1 %}
+		<p><a href="{% url 'blog_post:detail' article.prev_id %}">上一篇&lt;&lt;&lt;{{ article.prev_title|title }}</a></p>
+		{% endif %}
+		{% if article.next == 1 %}
+		<p><a href="{% url 'blog_post:detail' article.next_id %}">下一篇&gt;&gt;&gt;{{ article.next_title|title }}</a></p>
+		{% endif %}
+		<br>
+		<h3 class="tm-black-text">评论</h3>                  
+		<div class="comment_text">  
+			{% for comment in comment_list %}
+			<p>{{ comment.body }}</p>
+			<span class="comment_author">{{ comment.user_name }}</span>
+			<time class="time">{{ comment.created_time }}</time>
+			<hr>
+			{% endfor %}
+		</div>
+		<br>
+		<div class="comment_form">
+			<h3>发表评论</h3>
+			<form method="post" action="{% url 'blog_post:comment' article.pk %}">
+			{% csrf_token %}
+			<div>
+				{% for field in form %}
+					{{ field }}
+					<br>
+				{% endfor %}
+			</div>
+			<button type="submit" class="tm-btn text-uppercase">评论</button>
+			</form>
+		</div>
+		<br>
+	</div>
+{% endblock %}

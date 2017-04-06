@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+	<div class="col-xs-12 col-sm-12 col-md-8 col-lg-9 col-xl-9">
+		{% load paginate_tags %}
+		{% paginate article_list 3 %}
+		{% for article in article_list %}
+		<div class="tm-blog-post">
+			<h2 class="tm-blue-text"><a href="{% url 'blog_post:detail' article.pk %}">{{ article.title|title }}</a></h2>
+			<h6>发布日期：<span>{{ article.create_time|date:'y-m-d' }}</span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp浏览量：<span>{{ article.views }}</span></h6>
+			<p>{{ article.abstract|safe }}</p>
+			<div><a href="{% url 'blog_post:detail' article.pk %}">&gt;&gt;&gt;阅读</a></div>
+		</div>
+		<br>
+		<br>
+		{% endfor %}
+		{% include 'pagination.html' %} 
+	</div>
+{% endblock %}
