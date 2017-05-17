@@ -25,7 +25,7 @@ SECRET_KEY = 'ypap8xqh#=hcn*=$0w+)4*7)@*d$42p50o2opkk+wb#&-2cn01'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.1.187']
+ALLOWED_HOSTS = ['45.62.116.109']
 
 
 # Application definition
@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'blog.wsgi.application'
 MYSQL_HOST = 'localhost'
 MYSQL_PORT = '3306'
 MYSQL_USER = 'root'
-MYSQL_PASS = 'kingx'
+MYSQL_PASS = 'yanchuan'
 MYSQL_DB   = 'blog'
 #"""
 
