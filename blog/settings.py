@@ -79,8 +79,8 @@ WSGI_APPLICATION = 'blog.wsgi.application'
 MYSQL_HOST = 'localhost'
 MYSQL_PORT = '3306'
 MYSQL_USER = 'root'
-MYSQL_PASS = 'yanchuan'
-MYSQL_DB   = 'blog'
+MYSQL_PASS = 'worthy'
+MYSQL_DB   = 'blogs'
 #"""
 
 DATABASES = {
