@@ -25,7 +25,7 @@ SECRET_KEY = 'ypap8xqh#=hcn*=$0w+)4*7)@*d$42p50o2opkk+wb#&-2cn01'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -42,6 +42,7 @@ INSTALLED_APPS = (
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -80,7 +81,7 @@ MYSQL_HOST = 'localhost'
 MYSQL_PORT = '3306'
 MYSQL_USER = 'root'
 MYSQL_PASS = 'worthy'
-MYSQL_DB   = 'blogs'
+MYSQL_DB   = 'blog'
 #"""
 
 DATABASES = {
@@ -113,4 +114,8 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES = os.path.join(BASE_DIR, 'blog_post/static')
+#STATICFILES = os.path.join(BASE_DIR, 'blog_post/static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'collected_static')
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/' 

@@ -4,8 +4,9 @@ from django.core.urlresolvers import reverse
 
 class Article(models.Model):
 	title = models.CharField('标题', max_length=70)
-	abstract = models.TextField('摘要', default='abstract')
+	abstract = models.TextField('摘要')
 	body = models.TextField('正文')
+	img = models.ImageField(upload_to='images',null=False,blank=True)
 	create_time = models.DateTimeField('创建时间', auto_now_add=True)
 	last_modified_time = models.DateTimeField('修改时间', auto_now=True)
 	views = models.PositiveIntegerField('浏览量', default=0)
@@ -15,7 +16,9 @@ class Article(models.Model):
 		return self.title
 		
 	class Meta:
+		managed = True
 		ordering = ['-last_modified_time']
+
 		
 	def get_absolute_url(self):
 		return reverse('blog_post:detail', kwargs={'article_id': self.pk})

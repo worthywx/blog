@@ -15,6 +15,8 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from blog_post import views
+from django.conf.urls.static import static
+from django.conf import settings
 
 admin.autodiscover()
 
@@ -22,3 +24,4 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
 	url(r'', include('blog_post.urls', namespace='blog_post', app_name='blog_post'))
 ]
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
