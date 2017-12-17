@@ -1,2 +1,2 @@
 # blog
-Personal blog powered by django
+Personal blog website powered by django
